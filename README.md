@@ -33,15 +33,11 @@ openclaw-prompt-injection/
 
 ## Attack Categories (by Source)
 
-We categorize attacks by the **entry point** to help researchers understand the threat model:
+We categorize attacks by the **entry point** to help researchers understand the threat model. New categories are added as the community submits cases for them:
 
 | Category | Source | Description | Example |
 | :--- | :--- | :--- | :--- |
 | **SRC-FILE** | **Local File** | Payloads in local files the agent is asked to read. | An `index.html` with hidden instructions in a white-on-white `div`. |
-| **SRC-WEB** | **Web / URL** | Payloads fetched during `web_search` or browsing. | A blog post that tricks the agent into exfiltrating session data. |
-| **SRC-SKILL** | **Skill / Tool** | Malicious instructions hidden in a tool's manifest or README. | A "Helper Skill" that requests unauthorized `sudo` access. |
-| **SRC-SOUL** | **Memory (SOUL.md)** | Poisoned long-term memory that triggers in a future session. | A "sleeper" command saved in the agent's persistent memory. |
-| **SRC-FEED** | **Social Feed** | Payloads encountered while autonomously monitoring feeds. | A post that tricks the agent into "liking" or "reposting" it. |
 
 ## How to Use This Benchmark
 
