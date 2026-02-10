@@ -1,0 +1,35 @@
+name: Update Leaderboard
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'attacks/**/meta.yaml'
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run update script
+        run: python scripts/update_leaderboard.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add LEADERBOARD.md
+          git commit -m "docs: auto-update leaderboard" || exit 0
+          git push
+
